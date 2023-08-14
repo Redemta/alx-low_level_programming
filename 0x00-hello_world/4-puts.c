@@ -1,5 +1,6 @@
 /**
- * main - using puts function to print a line.
+ * main - Entry point
+ *
  * Return: Always 0 (Success)
  */
 int main(void)
