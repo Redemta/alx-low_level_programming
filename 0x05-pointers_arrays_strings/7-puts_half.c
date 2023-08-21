@@ -1,27 +1,28 @@
 #include "main.h"
 
 /**
- * reset_to_98 - function that takes a pointer to int as parameter and updates value it points to 98.
- * @n: The int to check.
- * Return: Always (0) success.
+ * puts_half - print half of a string, followed by a new line.
+ * @str: string to check
+ * Return: Always 0
  */
 
-void reset_to_98(int *n)
+void puts_half(char *str)
 {
+	int n;
+	int length;
+	int i;
 
-	if (n != NULL)
+	length = 0;
+	while (str[length] != '\0')
 	{
-		*n = 98;
+		length++;
 	}
-	int main()
+
+	n = (length - 1) / 2;
+
+	for (i = (n + 1); i < length; i++)
 	{
-		int n = 402;
-		int *ptr = &n;
-
-		_putchar("n=%d\n", n);
-		reset_to_98(ptr);
-		_putchar("n=%d\n", n);
-
-		return 0;
+		_putchar(str[i]);
 	}
+	_putchar('\n');
 }
