@@ -18,7 +18,7 @@ char *cap_string(char *str)
 			str[i] = str[i] - 'a' + 'A';
 			j = 0;
 		}
-		else if (str[i] == ' ' || str[i] == '\t' || str[i] == '\n' || str[i] == ',' || str[i] == ';' || str[i] == '.' || str[i] == '!' || str[i] == '?' || str[i] == '"' ||str[i] == '(' || str[i] == ')' || str[i] == '{' || str[i] == '}')
+		else if (str[i] == ' ' || str[i] == '\t' || str[i] == '\n' || str[i] == ',' || str[i] == ';' || str[i] == '.' || str[i] == '!' || str[i] == '?' || str[i] == '"' ||str[i] == '(' || str[i] == ')' || str[i] == '{' || str[i] == '}' || str[i] == '-')
 		{
 			j = 1;
 		}
