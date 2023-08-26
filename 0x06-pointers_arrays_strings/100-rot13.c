@@ -2,30 +2,28 @@
 
 /**
  * *rot13 - function that encodes a string using rot13.
- * @str: char to check.
+ * @str: pointer to string.
  * Return: str.
  */
 
 char *rot13(char *str)
 {
-	int i = 0;
+	int i;
+	int j;
 
-	while (str[i] != '\0')
+	char currentChar[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+	char newChar[] = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
+
+	for (i = 0; str[i] != '\0'; i++)
 	{
-		char c = str[i];
-
-		if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'))
+		for (j = 0; j < 52; j++)
 		{
-			if (c >= 'A' && c <= 'Z')
+			if (str[i] == currentChar[j])
 			{
-				str[i] = (((c - 'A') + 13) % 26) + 'A';
-			}
-			else
-			{
-				str[i] = (((c - 'a') + 13) % 26) + 'a';
+				str[i] = newChar[j];
+				break;
 			}
 		}
-		i++;
 	}
 	return (str);
 }
