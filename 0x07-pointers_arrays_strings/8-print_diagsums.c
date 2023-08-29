@@ -9,31 +9,18 @@
 
 void print_diagsums(int *a, int size)
 {
-	int i = 0;
-	int main = 0;
-	int secondary = 0;
+	int i;
+	int j;
+	int sum1 = 0;
+	int sum2 = 0;
 
-	while (i < size)
+	for (i = 0; i <= (size * size); i = i + size + 1)
 	{
-		main += a[i * size + i];
-		secondary += a[i * size + size - i - 1];
-		i++;
+		sum1 = sum1 + a[i];
 	}
-	int divisor = 1;
-	while (main / divisor > 0)
+	for (j = size - 1; j <= (size * size) - size; j = j + size - 1)
 	{
-		int digit = (main / divisor) % 10;
-		_putchar('0' + digit);
-		divisor *= 10;
+		sum2 = sum2 + a[j];
 	}
-	_putchar('\n');
-
-	divisor = 1;
-	while (secondary / divisor > 0)
-	{
-		int digit = (secondary / divisor) % 10;
-		_putchar('0' + digit);
-		divisor *= 10;
-	}
-	_putchar('\n');
+	printf("%d, %d\n", sum1, sum2);
 }
