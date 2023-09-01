@@ -11,11 +11,9 @@ int main(int argc, char *argv[])
 {
 	int x = 0;
 
-	printf("%d\n", argc);
-
 	while (x < argc)
 	{
-		printf("%d: %s\n", x, argv[x]);
+		printf("%s\n", argv[x]);
 		x++;
 	}
 	return (0);
