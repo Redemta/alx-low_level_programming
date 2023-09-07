@@ -14,7 +14,6 @@ void *malloc_checked(unsigned int b)
 
 	if (ptr == NULL)
 	{
-		printf("Allocation failed\n");
 		exit(98);
 	}
 	return (ptr);
