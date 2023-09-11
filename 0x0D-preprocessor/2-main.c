@@ -1,10 +1,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main()
+/**
+ * main - program that prints the name of the file it was compiled from.
+ *
+ * Return: Always (0).
+ */
+
+int main(void)
 {
-	const char* f_name = __FILE__;
-	
+	const char *f_name = __FILE__;
+
 	printf("%s\n", f_name);
 
 	return (0);
