@@ -4,8 +4,7 @@
 
 /**
  * print_dog - function that prints a struct dog.
- * @d: name of parameter type.
- * Return: void.
+ * @d: The struct dog to be printed.
  */
 
 void print_dog(struct dog *d)
