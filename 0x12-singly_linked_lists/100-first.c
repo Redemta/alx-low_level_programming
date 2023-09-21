@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-void custom_message(void);
+void custom_message(void)__attribute__((constructor));
 
 /**
  * custom_message - function to print message before executing main function.
