@@ -9,45 +9,27 @@
 
 ssize_t read_textfile(const char *filename, size_t letters)
 {
-	char *buffer;
-	int i;
+	char *buff;
+	int fdescriptor;
 	ssize_t bytes_read, bytes_written;
 
-	i = open(filename, O_RDONLY);
+	if (!filename)
+		return (0);
+	fdescriptor = open(filename, O_RDONLY);
 
-	if (i == -1)
+	if (fdescriptor == -1)
 	{
-		perror("open");
-		return (-1);
+		return (0);
 	}
-	buffer = malloc(letters);
+	buff = malloc(sizeof(char) * letters);
+	if (buff == NULL)
+		return (0);
 
-	if (buffer == NULL)
-	{
-		close(i);
-		return (-1);
-	}
-	bytes_read = read(i, buffer, letters);
+	bytes_read = read(fdescriptor, buff, letters);
+	bytes_written = write(STDOUT_FILENO, buff, bytes_read);
 
-	if (bytes_read == -1)
-	{
-		free(buffer);
-		close(i);
-		return (-1);
-	}
-	bytes_written = write(STDOUT_FILENO, buffer, bytes_read);
+	close(fdescriptor);
+	free(buff);
 
-	if (bytes_written == -1)
-	{
-		free(buffer);
-		close(i);
-		return (-1);
-	}
-	free(buffer);
-
-	if (close(i) == -1)
-	{
-		return (-1);
-	}
 	return (bytes_written);
 }
