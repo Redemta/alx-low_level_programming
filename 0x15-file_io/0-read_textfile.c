@@ -9,30 +9,40 @@
 
 ssize_t read_textfile(const char *filename, size_t letters)
 {
-	FILE *file = fopen(filename, "r");
-	int i;
-	size_t lettersNum = 0;
+	ssize_t bytes_read, bytes_write;
+	int file_desc;
+	char *buffer;
 
 	if (filename == NULL)
 	{
 		return (0);
 	}
-	if (file == NULL)
+	file_desc = open(filename, O_RDONLY);
+	if (file_desc == -1)
 	{
 		return (0);
 	}
-	while (lettersNum < letters && !feof(file))
+	buffer = malloc(sizeof(char) * letters);
+	if (buffer == NULL)
 	{
-		i = fgetc(file);
-
-		if (i == EOF)
-		{
-			break;
-		}
-		putchar(i);
-		lettersNum++;
+		close(file_desc);
+		return (0);
 	}
-	fclose(file);
-
-	return (lettersNum);
+	bytes_read = read(file_desc, buffer, letters);
+	if (bytes_read == -1)
+	{
+		close(file_desc);
+		free(buffer);
+		return (0);
+	}
+	bytes_write = write(STDOUT_FILENO, buffer, bytes_read);
+	if (bytes_write == -1 || bytes_write != bytes_read)
+	{
+		close(file_desc);
+		free(buffer);
+		return (0);
+	}
+	close(file_desc);
+	free(buffer);
+	return (bytes_read);
 }
